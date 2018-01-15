@@ -1,38 +1,48 @@
 
-var count = 0;
+//Setup
+var contacts = [
+    {
+        "firstName": "Akira",
+        "lastName": "Laine",
+        "number": "0543236543",
+        "likes": ["Pizza", "Coding", "Brownie Points"]
+    },
+    {
+        "firstName": "Harry",
+        "lastName": "Potter",
+        "number": "0994372684",
+        "likes": ["Hogwarts", "Magic", "Hagrid"]
+    },
+    {
+        "firstName": "Sherlock",
+        "lastName": "Holmes",
+        "number": "0487345643",
+        "likes": ["Intriguing Cases", "Violin"]
+    },
+    {
+        "firstName": "Kristian",
+        "lastName": "Vos",
+        "number": "unknown",
+        "likes": ["Javascript", "Gaming", "Foxes"]
+    }
+];
 
-function cc(card) {
-  // Only change code below this line
-  switch (card) {
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-      count++;
-      break;
-    case 10:
-    case 'J':
-    case 'Q':
-    case 'K':
-    case 'A':
-      count--;
-      break;
-    default:
-      break;
+
+function lookUpProfile(firstName, prop){
+// Only change code below this line
+  for (var i = 0; i < contacts.length; i++) {
+    if (contacts[i].firstName === firstName) {
+      if (contacts[i].hasOwnProperty(prop)) {
+        return contacts[i][prop];
+      }
+      else {
+        return "No such property";
+      }
+    }
   }
-
-  if (count > 0) {
-    return count + " Bet";
-  }
-  else {
-    return count + " Hold";
-  }
-
-
-  // Only change code above this line
+  return "No such contact";
+// Only change code above this line
 }
 
-// Add/remove calls to test your function.
-// Note: Only the last will display
-cc(2); cc(3); cc(7); cc('K'); cc('A');
+// Change these values to test your function
+lookUpProfile("Sherlock", "likes");
